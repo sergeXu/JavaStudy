@@ -1,6 +1,8 @@
 package cn.serge.test;
 
 import cn.serge.model.*;
+import cn.serge.service.ProductService;
+
 import org.springframework.context.*;
 import org.springframework.context.support.*;
 public class TestSpring {
@@ -10,6 +12,9 @@ public class TestSpring {
 		System.out.println(category.getName());
 		Product product = (Product)context.getBean("p");
 		System.out.println(product.getName()+" :"+product.getCategory().getName());
+		//test aop
+		ProductService productService = (ProductService)context.getBean("s");
+		productService.doSomeService();
 	}
 	
 	
