@@ -17,7 +17,7 @@
 <br>
 <table border="1">
 	<tr>
-		<th>封面</th><th>书名</th><th>作者</th><th>价格</th>
+		<th>封面</th><th>书名</th><th>作者</th><th>价格</th><th>简介</th>
 	</tr>
 	<c:forEach items="${requestScope.bookList }" var="book">
 		<tr>
@@ -25,6 +25,7 @@
 			<td>${book.name }</td>
 			<td>${book.author }</td>
 			<td>${book.price }</td>
+			<td>${book.remark }</td>
 		</tr>
 	</c:forEach>
 </table>
