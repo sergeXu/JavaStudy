@@ -3,14 +3,12 @@ package cn.serge.cn.serge.domain;
 /**
  * Created by sergexu on 2017/4/28.
  */
-public class Function {
+public abstract class Function {
     private int functionId;
     private String name;
     private String result;
-    public int execute(String[] args)
-    {
-        return 0;
-    };
+    public abstract int execute(String[] args);
+
 
     public int getFunctionId() {
         return functionId;

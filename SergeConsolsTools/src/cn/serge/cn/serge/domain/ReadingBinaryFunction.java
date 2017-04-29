@@ -10,8 +10,9 @@ import java.util.Scanner;
  */
 public class ReadingBinaryFunction extends Function{
     public static final int BINARYFUNCTIONID=10;
+    public static final int ALPHALENGTH = 8;
     public ReadingBinaryFunction() {
-        this.setFunctionId(10);
+        this.setFunctionId(BINARYFUNCTIONID);
         this.setName("读取二进制文件为字符串");
     }
 
@@ -39,20 +40,24 @@ public class ReadingBinaryFunction extends Function{
         ScreenPrinter printer = ScreenPrinter.getInstance();
         StringBuilder numString =new StringBuilder();
         StringBuilder numStr = new StringBuilder();
-        for(int i=0;i<inputBinary.length()-8;i+=8)
+        StringBuilder charString =new StringBuilder();
+        for(int i=0;i<inputBinary.length()-ALPHALENGTH;i+=ALPHALENGTH)
         {
             numStr.delete(0,numStr.length());
-            for(int j=0;j<8;j++)
+            for(int j=0;j<ALPHALENGTH;j++)
             {
                 numStr.append(inputBinary.charAt(i+j));
             }
             printer.println(numStr.toString());
             numString.append(" ");
 //            numString.append(Integer.parseInt(numStr.toString(),2));
-            char ch = (char)Integer.parseInt(numStr.toString(),2);
-            numString.append(ch);
+            int num = Integer.parseInt(numStr.toString(),2);
+            char ch = (char)num;
+            charString.append(ch);
+            numString.append(num);
         }
-        printer.println("R:"+ numString.toString());
+        printer.println("R(int):"+ numString.toString());
+        printer.println("R(char):"+ charString.toString());
         return "";
     }
 
