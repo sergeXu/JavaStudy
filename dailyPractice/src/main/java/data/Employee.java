@@ -1,6 +1,7 @@
 package data;
-
+//4-1
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Employee {
     private String name;
@@ -12,8 +13,18 @@ public class Employee {
         this.salery = salery;
         this.hireDay = hireDay;
     }
-
+    public Employee(String name, double salery,int year,int month,int day) {
+        this.name = name;
+        this.salery = salery;
+        GregorianCalendar calendar = new GregorianCalendar(year,month-1,day);
+        hireDay = calendar.getTime();
+    }
     public Employee() {
+    }
+
+    public void raiseSalary(double byPercent){
+        Double raisedSalery = this.salery * byPercent / 100.0;
+        this.salery = this.salery + raisedSalery;
     }
 
     public String getName() {
@@ -38,5 +49,14 @@ public class Employee {
 
     public void setHireDay(Date hireDay) {
         this.hireDay = hireDay;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", salery=" + salery +
+                ", hireDay=" + hireDay +
+                '}';
     }
 }
